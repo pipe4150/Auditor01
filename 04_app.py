@@ -3,19 +3,20 @@ import os
 import re
 import pandas as pd
 import json
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from lector_correos import conectar_y_descargar
 from procesador_ia import procesar_y_guardar_pdf
 from lector_drive import buscar_y_descargar_por_cedula
 
 # ✅ Carga las variables del archivo .env (que NO está en GitHub)
-load_dotenv()
+#load_dotenv()
 
 # --- CREDENCIALES DESDE VARIABLES DE ENTORNO ---
-TWILIO_SID    = os.getenv("TWILIO_SID")
-TWILIO_TOKEN  = os.getenv("TWILIO_TOKEN")
-NUMERO_TWILIO = os.getenv("NUMERO_TWILIO")
-TU_NUMERO     = os.getenv("TU_NUMERO")
+
+TWILIO_SID = st.secrets["twilio"]["sid"]
+TWILIO_TOKEN = st.secrets["twilio"]["token"]
+NUMERO_TWILIO = st.secrets["twilio"]["numero_twilio"]
+TU_NUMERO = st.secrets["twilio"]["tu_numero"]
 
 # --- FUNCIÓN DE BASE DE DATOS LOCAL ---
 def gestionar_historico(exitos=0, fallos=0, modo="lectura"):
